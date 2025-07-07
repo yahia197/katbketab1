@@ -89,6 +89,12 @@
                 transform: translateY(0);
             }
         }
+
+        #slideshow-indicators span.active {
+    background-color: #b59b86;
+    transform: scale(1.2);
+        }
+        
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
@@ -129,6 +135,16 @@
                     </div>
                 </div>
             </div>
+
+<!-- Slideshow Indicators -->
+<div class="flex justify-center mt-2 space-x-2" id="slideshow-indicators">
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+    <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
+</div>
 
             <!-- Date and Time -->
             <div class="text-center">
@@ -196,32 +212,53 @@
         </div>
     </div>
     <script>
-        const weddingDate = new Date("2025-10-24T18:00:00+02:00");
-        const countDownDate = weddingDate.getTime();
+    const slides = document.querySelectorAll(".slide");
+    const indicators = document.querySelectorAll("#slideshow-indicators span");
+    let currentSlide = 0;
 
-        const x = setInterval(function() {
-            const now = new Date();
-            const options = { timeZone: 'Africa/Cairo' };
-            const egyptTime = new Date(now.toLocaleString('en-US', options));
-            const nowTime = egyptTime.getTime();
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === index ? "1" : "0";
+        });
+        indicators.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+    }
 
-            const distance = countDownDate - nowTime;
+    showSlide(currentSlide);
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 4000);
 
-            document.querySelector(".days").innerHTML = days.toString().padStart(2, '0');
-            document.querySelector(".hours").innerHTML = hours.toString().padStart(2, '0');
-            document.querySelector(".minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.querySelector(".seconds").innerHTML = seconds.toString().padStart(2, '0');
+    // Countdown timer stays unchanged
+    const weddingDate = new Date("2025-10-24T18:00:00+02:00");
+    const countDownDate = weddingDate.getTime();
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "The wedding has begun!";
-            }
-        }, 1000);
-    </script>
+    const x = setInterval(function() {
+        const now = new Date();
+        const options = { timeZone: 'Africa/Cairo' };
+        const egyptTime = new Date(now.toLocaleString('en-US', options));
+        const nowTime = egyptTime.getTime();
+
+        const distance = countDownDate - nowTime;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.querySelector(".days").innerHTML = days.toString().padStart(2, '0');
+        document.querySelector(".hours").innerHTML = hours.toString().padStart(2, '0');
+        document.querySelector(".minutes").innerHTML = minutes.toString().padStart(2, '0');
+        document.querySelector(".seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "The wedding has begun!";
+        }
+    }, 1000);
+</script>
 <p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=yahia197/yahia-alia" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
