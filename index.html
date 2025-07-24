@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Yahia & Alia's Marriage Contract</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap">
@@ -94,6 +94,29 @@
     background-color: #b59b86;
     transform: scale(1.2);
         }
+        /* === Enhancement #3: Zoom-In Hero Animation === */
+img.object-cover.object-center {
+    animation: zoomHero 20s ease-in-out infinite alternate;
+}
+@keyframes zoomHero {
+    from { transform: scale(1); }
+    to { transform: scale(1.03); }
+}
+
+/* === Enhancement #5: Mobile Responsiveness Improvements === */
+@media (max-width: 640px) {
+    .slideshow-container {
+        height: 150px;
+    }
+    .text-lg, .text-xl {
+        font-size: 1rem !important;
+    }
+}
+
+/* === Enhancement #7: Smooth Scrolling === */
+html {
+    scroll-behavior: smooth;
+}
         
     </style>
 </head>
@@ -145,6 +168,8 @@
     <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
     <span class="w-3 h-3 bg-gray-300 rounded-full transition-all duration-300"></span>
 </div>
+
+
 
             <!-- Date and Time -->
             <div class="text-center">
@@ -206,7 +231,7 @@
 
             <!-- Footer -->
             <div class="text-center text-xs sm:text-sm text-gray-600 mt-10">
-                <p>We are honored by your presence on this special day</p>
+                <p class="text-lg leading-relaxed">We are honored by your presence...</p>
                 <p class="mt-2 handwritten text-base sm:text-lg">Yahia & Alia</p>
             </div>
         </div>
@@ -260,5 +285,4 @@
         }
     }, 1000);
 </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=yahia197/yahia-alia" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p><p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=yahia197/yahia-alia" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
